@@ -1,0 +1,15 @@
+<?php
+
+$files = glob('./src/*/*.php');
+
+foreach($files as $file) {
+    print 'php vendor/bin/psalm --output-format=json '.$file.PHP_EOL;
+    $json = shell_exec('php vendor/bin/psalm --output-format=json '.$file.' --no-progress 2>&1');
+    
+    $json = preg_replace('/^.*?\[/s', '[', $json);
+    
+    $result = json_decode($json);
+    print_r($result);
+}
+
+?>

@@ -1,0 +1,17 @@
+# -----------------
+# Name        : Name of the file
+# Description : Plain English explanation
+# PHP         : PHP version compatibility. Use MAJOR.MINOR version syntax. Add + or - to mention 'and more recent' or 'and older '.
+# -----------------
+<?php
+
+echo A;
+
+const B = 1;
+echo B;
+
+# -----------------
+# Line          : 4
+# Error         : UndefinedConstant
+# NoErrorOnLine : 6
+# NoErrorOfType : 

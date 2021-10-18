@@ -1,0 +1,26 @@
+#!/bin/php
+<?php
+
+$files = glob('./sources/*/*.scphp');
+
+if (!file_exists('./src')) {
+    mkdir('./src', 0755);
+}
+
+foreach($files as $file) {
+    [,,$main, $name] = explode('/', $file);
+    
+    if (!file_exists("./src/$main")) {
+        mkdir('./src/'.$main, 0755);
+    }
+    
+    $scphp = file_get_contents($file);
+    [,$options, $code, $result] = explode('# -----------------'.PHP_EOL, $scphp);
+    
+    file_put_contents('./src/'.$main.'/'.substr($name, 0, -6).'.php', $code);
+}
+
+print count($files)." scripts generated\n";
+
+
+?>
